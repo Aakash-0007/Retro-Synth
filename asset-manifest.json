@@ -1,14 +1,14 @@
 {
   "files": {
-    "main.css": "/Aakash-0007/Retro-Synth.git/static/css/main.2c1f0135.css",
-    "main.js": "/Aakash-0007/Retro-Synth.git/static/js/main.028985a5.js",
-    "static/media/synthwave.jpg": "/Aakash-0007/Retro-Synth.git/static/media/synthwave.68c4efcac3ee31f2561e.jpg",
-    "index.html": "/Aakash-0007/Retro-Synth.git/index.html",
-    "main.2c1f0135.css.map": "/Aakash-0007/Retro-Synth.git/static/css/main.2c1f0135.css.map",
-    "main.028985a5.js.map": "/Aakash-0007/Retro-Synth.git/static/js/main.028985a5.js.map"
+    "main.css": "/Retro-Synth/static/css/main.9ac0e3a4.css",
+    "main.js": "/Retro-Synth/static/js/main.028985a5.js",
+    "static/media/synthwave.jpg": "/Retro-Synth/static/media/synthwave.68c4efcac3ee31f2561e.jpg",
+    "index.html": "/Retro-Synth/index.html",
+    "main.9ac0e3a4.css.map": "/Retro-Synth/static/css/main.9ac0e3a4.css.map",
+    "main.028985a5.js.map": "/Retro-Synth/static/js/main.028985a5.js.map"
   },
   "entrypoints": [
-    "static/css/main.2c1f0135.css",
+    "static/css/main.9ac0e3a4.css",
     "static/js/main.028985a5.js"
   ]
 }
