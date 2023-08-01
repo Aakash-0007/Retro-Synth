@@ -1,70 +1,32 @@
-# Getting Started with Create React App
+This code is a React application that creates an audio synthesizer with a piano keyboard interface. The synthesizer allows you to play notes on the piano keyboard and modify various sound parameters.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+1. React Components:
+   - Piano: This component represents the piano keyboard. It renders the keys based on the notes array, which contains information about the frequency, label, and whether the note is sharp or not. When a key is clicked, it triggers the noteOn function to start playing the corresponding note, and when the key is released (mouse up), it triggers the noteOff function to stop the sound.
+   - Synthesizer: This is the main component that wraps the entire synthesizer. It contains sliders and controls for various parameters like volume, waveform type, attack, decay, sustain, release, lowpass frequency, Q value, and delay time. It also renders the Piano component, passing the relevant parameters for sound generation.
 
-## Available Scripts
+2. AudioContext:
+   - The code creates an AudioContext object using the Web Audio API. This is the fundamental interface for creating, processing, and managing audio in the application.
 
-In the project directory, you can run:
+3. State and Hooks:
+   - The Synthesizer component uses React useState and useRef hooks to manage and store various states:
+     - adsr: An object that stores Attack, Decay, Sustain, and Release values for the envelope of the sound.
+     - width: A state that represents the width effect for the sound.
+     - volume: The volume of the sound.
+     - waveformType: The type of waveform used in the audio oscillator (sine, square, sawtooth, or triangle).
+     - lowpassFrequency: The frequency value for the low-pass filter.
+     - Qchange: The Q value for the low-pass filter.
+     - delayTime: The delay time for the audio.
+     - isPolyMode: A boolean flag that indicates whether the synthesizer is in polyphonic mode or not.
+   - The Piano component uses useState to manage the state of active oscillators and whether a note is currently playing (isNoteOn).
 
-### `npm start`
+4. Audio Generation and Processing:
+   - The createOscillator function is responsible for creating and setting up an audio oscillator with various parameters like frequency, waveform type, and detune. It also connects a low-pass filter, gain node (for volume control), and delay node to the oscillator to create the sound.
+   - The noteOn function is triggered when a piano key is clicked. It creates three oscillators for the same note, detuned with slight differences, to achieve a more "wide" or "thicker" sound (used for polyphony simulation). It sets the state with the active oscillators and sets isNoteOn to true.
+   - The noteOff function is triggered when a piano key is released (mouse up). It stops and disconnects the oscillators and resets the state.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+5. Effects and Modifiers:
+   - The sound is modified using a low-pass filter, which is connected to each oscillator. The lowpassFrequency and Qchange values are controlled by the sliders in the Synthesizer component.
+   - The widthEffect parameter creates detuned oscillators to achieve a wider sound.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+6. Polyphonic Mode:
+   - The synthesizer can be toggled between polyphonic and monophonic modes using the "Poly On" and "Poly Off" buttons. In polyphonic mode, multiple notes can be played simultaneously, and each note has its set of oscillators. In monophonic mode, playing a new note will stop the previous note.
