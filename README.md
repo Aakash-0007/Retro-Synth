@@ -1,4 +1,5 @@
 This code is a React application that creates an audio synthesizer with a piano keyboard interface. The synthesizer allows you to play notes on the piano keyboard and modify various sound parameters.
+This project stems from my love for music and the nostalgic 90s synthwave.
 
 1. React Components:
    - Piano: This component represents the piano keyboard. It renders the keys based on the notes array, which contains information about the frequency, label, and whether the note is sharp or not. When a key is clicked, it triggers the noteOn function to start playing the corresponding note, and when the key is released (mouse up), it triggers the noteOff function to stop the sound.
